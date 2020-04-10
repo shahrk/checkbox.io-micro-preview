@@ -21,3 +21,9 @@ In another terminal, run:
 ```bash
 curl -X POST -H "Content-Type: application/json" --data @resources/survey.json http://localhost:3000/preview
 ```
+
+### Broken branch
+
+For testing a broken version of service, there is a bad commit on the broken branch:
+https://github.com/chrisparnin/checkbox.io-micro-preview/tree/broken
+
