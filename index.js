@@ -11,9 +11,16 @@ app.configure(function () {
 
 app.post('/preview', function(req,res)
 {
-    console.log(req.body.markdown);
-    var text = marqdown.render( req.body.markdown );
-    res.send( {preview: text} );
+    try
+    {
+        var text = marqdown.render( req.body );
+        res.send( {preview: text} );
+    }
+    catch(e)
+    {
+        console.log(e);
+        res.status(500).send( {preview: e.message});
+    }
 })
 
 app.listen(port, () => console.log(`Microservice listening on http://localhost:${port}/preview`))
