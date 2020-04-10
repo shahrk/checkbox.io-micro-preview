@@ -16,4 +16,4 @@ app.post('/preview', function(req,res)
     res.send( {preview: text} );
 })
 
-app.listen(port, () => console.log(`Microservice listening on http://localhost:${port}`))
+app.listen(port, () => console.log(`Microservice listening on http://localhost:${port}/preview`))
