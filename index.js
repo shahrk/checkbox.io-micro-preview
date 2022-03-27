@@ -4,12 +4,32 @@ const port = 3000
 
 const marqdown = require('./marqdown');
 
-app.configure(function () {
-    app.use(express.bodyParser());
-});
+const fs = require('fs');
 
+app.use(express.json());
 
-app.post('/preview', function(req,res)
+app.get('/survey/:id', function(req,res)
+{
+    if( !req.params.id ) {
+        res.send(`<html>Error: missing survey id</html>`)
+    }
+    
+    let file = `test/resources/survey.md`;
+    fs.readFile( file , {}, (err, data) => {
+
+        if( err ) {
+            return res.send(`<html>Error: ${err.message}</html>`)
+        }
+        var text = marqdown.render( data.toString() );
+        res.send( `<html>
+            ${text}
+        </html>`
+        );
+    });
+
+})
+
+app.post('/json', function(req,res)
 {
     console.log(req.body.markdown);
     var text = marqdown.render( req.body.markdown );
