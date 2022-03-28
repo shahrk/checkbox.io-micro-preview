@@ -14,7 +14,7 @@ app.get('/survey/:id', function(req,res)
         res.send(`<html>Error: missing survey id</html>`)
     }
     
-    let file = `test/resources/survey.md`;
+    let file = `test/resources/${req.params.id}`;
     fs.readFile( file , {}, (err, data) => {
 
         if( err ) {
