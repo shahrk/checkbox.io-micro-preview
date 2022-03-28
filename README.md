@@ -4,7 +4,9 @@ Extracted microservice from https://github.com/chrisparnin/checkbox.io.
 
 ### Service
 
-Exposes the endpoint `POST localhost:3000/preview`, accepting a body with `{markdown: <string>}`.
+1. Exposes the endpoint `GET localhost:3000/survey/{filename}` returns html body (viewable in browser).
+
+2. Exposes the endpoint `POST localhost:3000/json`, accepting a body with `{markdown: <string>}`.
 
 Returns the result `{preview: <html>}`.
 
@@ -13,17 +15,11 @@ Returns the result `{preview: <html>}`.
 Start service.
 ```bash
 node index.js
-Microservice listening on http://localhost:3000/preview
+Microservice listening on http://localhost:3000/{survey,json}
 ```
-
-In another terminal, run:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data @resources/survey.json http://localhost:3000/preview
+curl -X POST -H "Content-Type: application/json" --data @test/resources/survey.json http://localhost:3000/json
 ```
 
-### Broken branch
-
-For testing a broken version of service, there is a bad commit on the broken branch:
-https://github.com/chrisparnin/checkbox.io-micro-preview/tree/broken
 
