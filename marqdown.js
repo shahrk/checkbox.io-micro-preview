@@ -59,7 +59,7 @@ function loadPugTemplates()
 function testFile()
 {
 	fs.readFile('test.md', 'utf8', function (err,data) {
-	  	if (err) {
+	  	else if (err) {
 	    	return console.log(err);
 	  	}
 
